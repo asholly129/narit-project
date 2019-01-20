@@ -1,11 +1,19 @@
+import '@babel/polyfill'
 import Vue from 'vue'
+import './plugins/vuetify'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import firebase from 'firebase'
 import Vuetify from 'vuetify'
- 
+import VueCarousel from 'vue-carousel';
+import router from './router'
+import Router from 'vue-router'
+
+Vue.use(VueCarousel);
 Vue.use(Vuetify)
+Vue.use(Router)
 Vue.use(VueRouter)
+
 Vue.config.productionTip = false
 
 var config = {
@@ -19,5 +27,8 @@ var config = {
 firebase.initializeApp(config)
 
 new Vue({
-  render: h => h(App)
+  render: h => h(App),
+  router
 }).$mount('#app')
+
+

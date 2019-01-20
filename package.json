@@ -7,15 +7,19 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0-rc.1",
+    "auth0-js": "^9.8.2",
+    "babel-loader": "^8.0.4",
     "firebase": "^5.5.1",
     "vue": "^2.5.17",
-    "vue-carousel": "^0.14.0",
+    "vue-carousel": "^0.16.0-rc2",
     "vue-router": "^3.0.1",
     "vuetify": "^1.2.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.4",
     "@vue/cli-service": "^3.0.4",
+    "vue-cli-plugin-vuetify": "^0.4.6",
     "vue-template-compiler": "^2.5.17"
   }
 }

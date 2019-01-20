@@ -1,56 +1,8 @@
 <template>
     <v-app>
-        <template>
-            <v-toolbar color="#16466B" dark flat>
-                <v-toolbar-title class="body-2 grey--text">NARIT</v-toolbar-title>
-                <v-toolbar-items>
-                <v-btn v-for="i in 4" :key="i" flat ripple>Link {{ i }}</v-btn>
-                </v-toolbar-items>
-                <v-menu open-on-hover offset-y bottom
-                    transition="slide-y-transition">
-                    <v-toolbar-title slot="activator">
-                        <v-btn flat ripple>TOUCH</v-btn>
-                    </v-toolbar-title>
-
-                    <v-list class="list-color">
-                        <v-list-tile
-                        v-for="(item, index) in items"
-                        :key="index"
-                        >
-                        <v-list-tile-title>{{ item.src }}</v-list-tile-title>
-                        </v-list-tile>
-                    </v-list>
-                </v-menu>
-
-                <v-spacer></v-spacer>
-                <v-btn icon flat><v-icon>search</v-icon></v-btn> <hr>
-                    <v-btn flat>LOGIN</v-btn>
-                    <v-btn color="#E64E16">REGISTER</v-btn>
-            </v-toolbar>
-            <!-- <v-tabs
-                color="#16466B"
-                dark
-                slider-color="purple lighten-3"
-            >
-                <v-tab
-                    v-for="i in 3"
-                    :key="i"
-                    ripple
-                    flat
-                    @mouseover="pointThis(i)"
-                    >
-                    Item {{ i }}
-                </v-tab>
-                    <v-spacer></v-spacer>
-                    <v-tab icon> <v-icon>search</v-icon> </v-tab> <hr>
-                    <v-tab>LOGIN</v-tab>
-                    <v-btn color="#E64E16" dark>REGISTER</v-btn>
-            </v-tabs> -->
-        </template>
         <br><br>
-
         <template>
-             <v-container fluid grid-list-md>
+            <v-container fluid grid-list-md>
             <v-layout row wrap justify-center>
                  <v-flex d-flex xs12 sm6 md4>
                      <v-layout row wrap justify-center>
@@ -142,31 +94,34 @@
                 </v-flex>
             </v-layout>
 
-            <v-layout row wrap>
-                <v-flex xs12 sm12 md12>
-                     <carousel :per-page="4" :navigationEnabled="true"
-                     :paginationEnabled="false">
-                        <slide v-for="n in 10" :key="n">
-                        <!-- <v-btn color="orange">10 กุมภาพันธ์</v-btn> -->
-                        <div class="blue-btn">
-                            <v-layout row wrap>
-                                <v-flex xs2 class="text-xs-center">
-                                   <p class="date-text">10</p><p class="month-text">JAN</p>
-                                </v-flex>
-                                <v-flex xs1><hr></v-flex>
-                                <v-flex xs9 class="text-xs-left">
-                                    กิจกรรมงานวันวิทยาศาสตร์
-                                </v-flex>
-                            </v-layout>
-                        </div>
-                        </slide>
-                    </carousel>
-                </v-flex>
-            </v-layout>
+            <br><br><br><br><br><br>
         </v-container>
-        <v-layout row wrap>
-                <v-flex xs12 sm12 md12>   
-                    <div class="footer">
+                    <v-layout row wrap>
+                            <v-flex xs12 sm12 md12>   
+                                <div class="footer">
+                                    <br>
+                                    <v-layout row wrap>
+                            <v-flex xs12 sm12 md12>
+                                <carousel :per-page="4" :navigationEnabled="true"
+                                :paginationEnabled="false">
+                                    <slide v-for="n in 10" :key="n">
+                                    <!-- <v-btn color="orange">10 กุมภาพันธ์</v-btn> -->
+                                    <div class="blue-btn">
+                                        <v-layout row wrap>
+                                            <v-flex xs2 class="text-xs-center">
+                                            <p class="date-text">10</p><p class="month-text">JAN</p>
+                                            </v-flex>
+                                            <v-flex xs1><hr></v-flex>
+                                            <v-flex xs9 class="text-xs-left">
+                                                กิจกรรมงานวันวิทยาศาสตร์
+                                            </v-flex>
+                                        </v-layout>
+                                    </div>
+                                    </slide>
+                                </carousel>
+                            </v-flex>
+                        </v-layout>
+
                         <v-layout row wrap>
                             <v-flex md6>
                                 <v-btn flat>NARIT Web Mall</v-btn>
@@ -203,7 +158,9 @@
 import 'firebase/firestore'
 import firebase from 'firebase'
 import { Carousel, Slide } from 'vue-carousel';
+
 export default {
+    name: 'IndexPage',
     components: {
         Carousel,
         Slide,
@@ -211,21 +168,7 @@ export default {
     },
     data () {
         return {
-            count: 3,
-            items: [
-            {
-                src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
-            },
-            {
-                src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
-            },
-            {
-                src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
-            },
-            {
-                src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
-            }
-            ]
+            
             
         }
     },
@@ -234,9 +177,7 @@ export default {
         console.log(db)
     },
     methods: {
-        pointThis (i) {
-            console.log(i)
-        }
+        
     }
     
 }
@@ -271,9 +212,12 @@ export default {
     font-size:12px;margin-top: 0px; margin-bottom: 0px
 }
 .footer {
-    height: 100px;
+    height: 170px;
     width: 100%;
     background-color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
 }
 
 hr { 
