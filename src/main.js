@@ -8,6 +8,10 @@ import Vuetify from 'vuetify'
 import VueCarousel from 'vue-carousel';
 import router from './router'
 import Router from 'vue-router'
+import { VueEditor, Quill } from "vue2-editor";
+
+Vue.use(VueEditor)
+
 
 Vue.use(VueCarousel);
 Vue.use(Vuetify)

@@ -1,24 +1,25 @@
 <template>
     <v-app>
+        <v-img :src="bg" class="grey lighten-2">
         <br><br>
         <template>
             <v-container fluid grid-list-md>
             <v-layout row wrap justify-center>
                  <v-flex d-flex xs12 sm6 md4>
                      <v-layout row wrap justify-center>
-                         <p class="display-1">กิจกรรมที่น่าสนใจ</p>
+                         <p class="font-weight-medium" style="font-size:30px; color: #FFFFFF">กิจกรรมที่ล่าสุด</p>
                          <v-flex d-flex>
-                              <v-card>
+                              <v-card color="#3886BB" dark>
                                 <v-img
-                                src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
+                                :src="latestAct.img"
                                 aspect-ratio="1.7"
                                 ></v-img>
                                 <v-card-title primary-title>
                                 <div class="text-xs-left">
-                                    <div class="title text-xs-left font-weight-medium">Kangaroo Valley Safari</div>
-                                    <div class="subheading text-xs-left font-weight-thin">Located two hours south of Sydney in the Southern Highlands of New South Wales, ...</div>
+                                    <div class="text-xs-left font-weight-medium" style="font-size:20px">{{latestAct.title}}</div>
+                                    <div class="subheading text-xs-left font-weight-thin">{{latestAct.content}}</div>
                                     <!-- <div class="orange-btn">รายละเอียด</div> -->
-                                    <v-btn color="#E64E16" dark>รายละเอียด</v-btn>
+                                    <v-btn color="#E64E16" dark @click="routeToDetail(latestAct.id)">รายละเอียด</v-btn>
                                 </div>
                                 </v-card-title>
 
@@ -30,23 +31,24 @@
                 </v-flex>
       <v-flex d-flex xs12 sm6 md5>
         <v-layout row wrap justify-center>
-            <p class="display-1">กิจกรรมที่น่าสนใจ</p>
+            <p class="font-weight-medium" style="font-size:30px; color: #FFFFFF">กิจกรรมที่น่าสนใจ</p>
           <v-flex d-flex>
             <v-layout row wrap>
               <v-flex
-                v-for="n in 3"
-                :key="n"
+                v-for="(data, index) in interestedAct"
+                :key="index"
                 d-flex
                 xs12
               >
                 <v-card
-                  color="red lighten-2"
+                  color="#3886BB"
                   dark
+                  @click="routeToDetail(data.id)"
                 >
                   <v-layout row>
                             <v-flex xs5 d-flex><br><br>
                                 <v-img
-                                src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
+                                :src="data.img"
                                 aspect-ratio="1.7"
                                 ></v-img>
                             </v-flex>
@@ -54,8 +56,8 @@
                             <v-flex xs7>
                                 <v-card-title primary-title>
                                 <div>
-                                    <div class="subheading text-xs-left font-weight-medium">Kangaroo Valley Safari</div>
-                                    <div class="body-1 text-xs-left font-weight-thin">Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
+                                    <div class="subheading text-xs-left font-weight-medium" >{{data.title}}</div>
+                                    <div class="body-1 text-xs-left font-weight-thin">{{data.content}}</div>
                                 </div>
                                 </v-card-title>
 
@@ -76,16 +78,16 @@
                 <v-flex xs12 sm12 md12>
                     <v-card color="indigo" dark>
                         <v-img
-                        src="https://cdn.vuetifyjs.com/images/lists/ali.png"
+                        :src="img"
                         height="300px">
                             <v-layout
                             fill-height
                             row-wrap>
                                 <v-card-text>
                                     <br><br><br>
-                                    <p class="display-1">ค่ายเยาวชนดูดาว ครั้งที่ 1</p>
-                                    <p class="title">9 - 11 กุมภาพันธ์  2561</p>
-                                    <v-btn color="#E64E16">รายละเอียด</v-btn>
+                                    <p class="font-weight-medium" style="font-size:30px">ค่ายเยาวชนดูดาว ครั้งที่ 1</p>
+                                    <p class="font-weight-medium" style="font-size:20px">9 - 11 กุมภาพันธ์  2561</p>
+                                    <v-btn color="#E64E16" @click="routeToApplication()">สมัคร</v-btn>
                                 </v-card-text>
                             </v-layout>
                         </v-img>
@@ -94,26 +96,27 @@
                 </v-flex>
             </v-layout>
 
-            <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
         </v-container>
+        
                     <v-layout row wrap>
                             <v-flex xs12 sm12 md12>   
-                                <div class="footer">
-                                    <br>
-                                    <v-layout row wrap>
-                            <v-flex xs12 sm12 md12>
+                        <div class="footer">
+                            <br>
+                            <v-layout row wrap>
+                            <v-flex xs12 sm12 md12 style="background-color: rgba(256, 256, 256, 0.3)">
                                 <carousel :per-page="4" :navigationEnabled="true"
                                 :paginationEnabled="false">
-                                    <slide v-for="n in 10" :key="n">
+                                    <slide v-for="(data, index) in activities" :key="index">
                                     <!-- <v-btn color="orange">10 กุมภาพันธ์</v-btn> -->
-                                    <div class="blue-btn">
+                                    <div class="blue-btn" @click="routeToDetail(data.id)">
                                         <v-layout row wrap>
                                             <v-flex xs2 class="text-xs-center">
-                                            <p class="date-text">10</p><p class="month-text">JAN</p>
+                                            <p class="date-text">{{data.day}}</p><p class="month-text">{{data.month}}</p>
                                             </v-flex>
                                             <v-flex xs1><hr></v-flex>
                                             <v-flex xs9 class="text-xs-left">
-                                                กิจกรรมงานวันวิทยาศาสตร์
+                                                {{data.title}}
                                             </v-flex>
                                         </v-layout>
                                     </div>
@@ -122,35 +125,30 @@
                             </v-flex>
                         </v-layout>
 
-                        <v-layout row wrap>
-                            <v-flex md6>
+                        <v-layout row wrap style="background-color: #FFFFFF;">
+                            <v-flex md6 class="text-xs-left">
                                 <v-btn flat>NARIT Web Mall</v-btn>
                                 <v-btn flat>ประกาศจัดซื้อจัดจ้าง</v-btn>
                                 <v-btn flat>ประกาศรับสมัครงาน</v-btn>
                             </v-flex>
                             <v-flex md6 class="text-xs-right">
                                 <v-layout row wrap> 
-                                    <v-flex md2></v-flex>
+                                <!-- <v-flex md2></v-flex> -->
+                                    <v-flex md2><br>
+                                        <img :src="logo" style="width: 100px">
+                                    </v-flex>
                                     <v-flex md10 class="text-xs-left">
                                         <p class="right-footer-text">สถาบันวิจัยดาราศาสตร์แห่งชาติ (องค์การมหาชน) กระทรวงวิทยาศาสตร์และเทคโนโลยี <br>
                                         260 หมู่ 4 ตำบลดอนแก้ว อำเภอแม่ริม จังหวัดเชียงใหม่ 50180 <br>
                                         โทรศัพท์ 053-121268-9 โทรสาร 053-121250</p>
                                     </v-flex>
                                 </v-layout>
-                                
                             </v-flex>
-
                         </v-layout>
-
-                        
                     </div>
-                    
                 </v-flex>
-
             </v-layout>
-        
-        
-
+            </v-img>
     </v-app>
 </template>
 
@@ -168,16 +166,55 @@ export default {
     },
     data () {
         return {
-            
-            
+            activities: [],
+            latestAct: {},
+            img: `http://www.narit.or.th/images/News/2018/20180820/pr20180820_1_01.jpg`,
+            interestedAct: [],
+            logo: require('@/assets/narit_logo.png'),
+            bg: require('@/assets/bg.jpg'),
         }
     },
     created () {
-        const db = firebase.firestore()
-        console.log(db)
+    },
+    mounted () {
+        const moment = require('moment');
+        const db = firebase.database().ref('/activities').once('value', (data) => {
+            console.log(data)
+            let interestTemp = []
+            data.forEach(e => {
+               
+               let actDate = e.child('date').val()
+               let m = moment(actDate)
+                let temp = {
+                    title: e.child('title').val(),
+                    content: e.child('content').val(),
+                    date: actDate,
+                    isInterested: e.child('isInterested').val(),
+                    month: m.format('MMM'),
+                    day: m.format('DD'),
+                    img: e.child('img').val(),
+                    id: e.key
+
+                }
+                if (temp.isInterested) {
+                    interestTemp.push(temp)
+                }
+                this.activities.push(temp)
+            })
+            this.interestedAct = interestTemp.slice(Math.max(this.interestedAct.length - 3, 1))
+            this.latestAct = this.activities[this.activities.length - 1]
+            console.log(this.interestedAct)
+        })
+        
     },
     methods: {
-        
+        routeToApplication() {
+            this.$router.push({ path: '/application'}) 
+        },
+        routeToDetail(key) {
+            console.log(key)
+            this.$router.push({ path: `/content/${key}` })
+        }
     }
     
 }
@@ -190,6 +227,7 @@ export default {
     color: white;
     padding: 10px 5px;
     width: 300px;
+    height: 60px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -214,10 +252,11 @@ export default {
 .footer {
     height: 170px;
     width: 100%;
-    background-color: white;
+    background-color: transparent;
     position: fixed;
     left: 0;
     bottom: 0;
+    
 }
 
 hr { 
@@ -240,6 +279,9 @@ hr {
 .list-color {
     background-color: #16466B;
     opacity: 50%;
+}
+.bg {
+    position: fixed;
 }
 
 </style>

@@ -4,19 +4,37 @@
         <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
         <template>
             <v-toolbar color="#16466B" dark flat>
-                <v-toolbar-title class="body-2 grey--text">NARIT</v-toolbar-title>
+                <v-toolbar-title >
+                        <v-img
+                        :src="logo"
+                        height="300px"></v-img>
+                    </v-toolbar-title>
                 <v-toolbar-items>
                 <v-btn v-for="i in menu.length" :key="i" flat ripple @click="routeTo(i)">{{menu[i-1]}}</v-btn>
                 </v-toolbar-items>
                 <v-menu open-on-hover offset-y bottom
                     transition="slide-y-transition">
                     <v-toolbar-title slot="activator">
-                        <v-btn flat ripple>TOUCH</v-btn>
+                        <v-btn flat ripple>FACILITIES</v-btn>
                     </v-toolbar-title>
-
                     <v-list class="list-color">
                         <v-list-tile
-                        v-for="(item, index) in items"
+                        v-for="(item, index) in facilitiesItems"
+                        :key="index"
+                        >
+                        <v-list-tile-title>{{ item.src }}</v-list-tile-title>
+                        </v-list-tile>
+                    </v-list>
+                </v-menu>
+
+                <v-menu open-on-hover offset-y bottom
+                    transition="slide-y-transition">
+                    <v-toolbar-title slot="activator">
+                        <v-btn flat ripple>FOR_ASTRONEMERS</v-btn>
+                    </v-toolbar-title>
+                    <v-list class="list-color">
+                        <v-list-tile
+                        v-for="(item, index) in astronomItem"
                         :key="index"
                         >
                         <v-list-tile-title>{{ item.src }}</v-list-tile-title>
@@ -45,21 +63,42 @@ export default {
     data () {
         return {
             count: 3,
-            items: [
+            logo: require('@/assets/narit_logo.png'),
+            facilitiesItems: [
             {
-                src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+                src: 'observing-facilities'
             },
             {
-                src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+                src: 'talk seminar distribute by narit'
             },
             {
-                src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
+                src: 'research'
             },
             {
-                src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+                src: 'job oppotunities for astronomer'
+            },
+            {
+                src: 'publication'
             }
             ],
-            menu: ['HOME', 'LINK1', 'LINK2', 'LINK3', 'LINK4']
+            astronomItem: [
+            {
+                src: 'observing-facilities'
+            },
+            {
+                src: 'talk seminar distribute by narit'
+            },
+            {
+                src: 'research'
+            },
+            {
+                src: 'job oppotunities for astronomer'
+            },
+            {
+                src: 'publication'
+            }
+            ],
+            menu: ['HOME','ABOUT']
             
         }
     },
@@ -74,20 +113,64 @@ export default {
             this.$router.push({ path: '/login'})
         },
         routeTo(i) {
+            console.log(i)
             if (i === 1) {
-                this.$router.push({ path: '/' })
+                this.$router.push({ path: '/'}) 
+            } else if (i == 2) {
+                this.$router.push({ path: '/about'}) 
             }
         }
     }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
 
+<style>
+@import url('https://fonts.googleapis.com/css?family=Prompt:300,400');
+
+
+
+html, body {
+  font-family: 'Prompt', sans-serif;
+}
+
+body {
+  font-family: 'Prompt', sans-serif;
+}
+
+#app {
+  font-family: 'Prompt', sans-serif;
   text-align: center;
   margin-top: 10px;
 }
 
+footer {
+  position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #97c763;
+    color: white;
+    text-align: center;
+}
+
+.footer-text {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.call-center {
+  margin-top: 15px;
+}
+
+.call-center-tel {
+  margin-top: 25px;
+}
+.phone {
+  margin-top: 22px;
+  padding-right: 10px;
+  font-size: 25px;
+}
 </style>
+
