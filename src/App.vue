@@ -3,16 +3,25 @@
     <div id="app">
         <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
         <template>
-            <v-toolbar color="#16466B" dark flat>
-                <v-toolbar-title >
-                        <v-img
-                        :src="logo"
-                        height="300px"></v-img>
-                    </v-toolbar-title>
+            <v-toolbar color="#16466B" dark flat fixed>
+                     <v-flex
+                        xs12
+                        sm6
+                        md8
+                        align-center
+                        justify-center
+                        layout
+                        text-xs-center
+                    >
+                    <v-avatar
+                    size="75">
+                        <img :src="avatar" alt="avatar">
+                        </v-avatar>
+                    </v-flex>
                 <v-toolbar-items>
                 <v-btn v-for="i in menu.length" :key="i" flat ripple @click="routeTo(i)">{{menu[i-1]}}</v-btn>
                 </v-toolbar-items>
-                <v-menu open-on-hover offset-y bottom
+                <!-- <v-menu open-on-hover offset-y bottom
                     transition="slide-y-transition">
                     <v-toolbar-title slot="activator">
                         <v-btn flat ripple>FACILITIES</v-btn>
@@ -25,9 +34,9 @@
                         <v-list-tile-title>{{ item.src }}</v-list-tile-title>
                         </v-list-tile>
                     </v-list>
-                </v-menu>
+                </v-menu> -->
 
-                <v-menu open-on-hover offset-y bottom
+                <!-- <v-menu open-on-hover offset-y bottom
                     transition="slide-y-transition">
                     <v-toolbar-title slot="activator">
                         <v-btn flat ripple>FOR_ASTRONEMERS</v-btn>
@@ -40,7 +49,7 @@
                         <v-list-tile-title>{{ item.src }}</v-list-tile-title>
                         </v-list-tile>
                     </v-list>
-                </v-menu>
+                </v-menu> -->
 
                 <v-spacer></v-spacer>
                 <v-btn icon flat><v-icon>search</v-icon></v-btn> <hr>
@@ -64,6 +73,7 @@ export default {
         return {
             count: 3,
             logo: require('@/assets/narit_logo.png'),
+            avatar: require('@/assets/logo.png'),
             facilitiesItems: [
             {
                 src: 'observing-facilities'
@@ -98,7 +108,8 @@ export default {
                 src: 'publication'
             }
             ],
-            menu: ['HOME','ABOUT']
+            menu: ['หน้าแรก','เกี่ยวกับ สดร.','ข่าวประชาสัมพันธ์',
+            'หอดูดาวแห่งชาติ','หอดูดาวภูมิภาค','หอดูดาวซีกฟ้าใต้','อุทยานดาราศาสตร์','FOR ASTRONOMERS']
             
         }
     },

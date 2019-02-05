@@ -3,6 +3,30 @@
         <v-img :src="bg" class="grey lighten-2">
         <br><br>
         <template>
+             <v-container fluid grid-list-md>
+            <v-layout row wrap>
+                <v-flex xs12 sm12 md12>
+                    <v-card color="indigo" dark>
+                        <v-img
+                        :src="img"
+                        height="300px">
+                            <v-layout
+                            fill-height
+                            row-wrap>
+                                <v-card-text>
+                                    <br><br><br>
+                                    <p class="font-weight-medium" style="font-size:30px">ค่ายเยาวชนดูดาว ครั้งที่ 1</p>
+                                    <p class="font-weight-medium" style="font-size:20px">9 - 11 กุมภาพันธ์  2561</p>
+                                    <v-btn color="#E64E16"  :href="link" target="_blank">สมัคร</v-btn>
+                                </v-card-text>
+                            </v-layout>
+                        </v-img>
+                    </v-card>
+
+                </v-flex>
+            </v-layout>
+
+        </v-container>
             <v-container fluid grid-list-md>
             <v-layout row wrap justify-center>
                  <v-flex d-flex xs12 sm6 md4>
@@ -72,32 +96,9 @@
             </v-layout> 
 
         </v-container>
+        <br><br><br><br><br><br><br><br>
         </template>
-            <v-container fluid grid-list-md>
-            <v-layout row wrap>
-                <v-flex xs12 sm12 md12>
-                    <v-card color="indigo" dark>
-                        <v-img
-                        :src="img"
-                        height="300px">
-                            <v-layout
-                            fill-height
-                            row-wrap>
-                                <v-card-text>
-                                    <br><br><br>
-                                    <p class="font-weight-medium" style="font-size:30px">ค่ายเยาวชนดูดาว ครั้งที่ 1</p>
-                                    <p class="font-weight-medium" style="font-size:20px">9 - 11 กุมภาพันธ์  2561</p>
-                                    <v-btn color="#E64E16" @click="routeToApplication()">สมัคร</v-btn>
-                                </v-card-text>
-                            </v-layout>
-                        </v-img>
-                    </v-card>
-
-                </v-flex>
-            </v-layout>
-
-        <br><br><br><br><br><br>
-        </v-container>
+           
         
                     <v-layout row wrap>
                             <v-flex xs12 sm12 md12>   
@@ -171,7 +172,8 @@ export default {
             img: `http://www.narit.or.th/images/News/2018/20180820/pr20180820_1_01.jpg`,
             interestedAct: [],
             logo: require('@/assets/narit_logo.png'),
-            bg: require('@/assets/bg.jpg'),
+            bg: require('@/assets/bgg.jpg'),
+            link: 'https://docs.google.com/forms/d/e/1FAIpQLSe2DLWTogem_h_WN2mAIxBQYbDXXskpzv93nk3cG0GVjcrYvg/viewform?fbclid=IwAR1_JWXkSVVZybUAxUpcq5dwmmyT1g9vuDOO6R7cTjVAzK3csepETqH-7iM'
         }
     },
     created () {
@@ -209,7 +211,8 @@ export default {
     },
     methods: {
         routeToApplication() {
-            this.$router.push({ path: '/application'}) 
+            // this.$router.push({ path: '/application'}) 
+            this.$router.go('https://docs.google.com/forms/d/e/1FAIpQLSe2DLWTogem_h_WN2mAIxBQYbDXXskpzv93nk3cG0GVjcrYvg/viewform?fbclid=IwAR1_JWXkSVVZybUAxUpcq5dwmmyT1g9vuDOO6R7cTjVAzK3csepETqH-7iM')
         },
         routeToDetail(key) {
             console.log(key)
