@@ -152,7 +152,7 @@ body {
 #app {
   font-family: 'Prompt', sans-serif;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 footer {

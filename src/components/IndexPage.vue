@@ -169,7 +169,7 @@ export default {
         return {
             activities: [],
             latestAct: {},
-            img: `http://www.narit.or.th/images/News/2018/20180820/pr20180820_1_01.jpg`,
+            img: require('@/assets/pr20180820_1_01.jpg'),
             interestedAct: [],
             logo: require('@/assets/narit_logo.png'),
             bg: require('@/assets/bgg.jpg'),

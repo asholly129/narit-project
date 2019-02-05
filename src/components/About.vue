@@ -1,6 +1,5 @@
 <template>
-    <v-app>
-        <v-container fluid grid-list-md>
+        <v-container fluid grid-list-md class="mt-2">
             <v-layout row wrap text-xs-left justify-center>
                 <v-flex xs12 sm12 md9>
                     <h1>{{title}}</h1><br>
@@ -10,7 +9,7 @@
                         <v-img>
 
                         </v-img>
-                        <img src="http://www.narit.or.th/images/About/princess_new.jpg">
+                        <img :src="require('@/assets/princess_new.jpg')">
                     </div>
                     
                     <p>
@@ -26,7 +25,7 @@
                     </p>
 
                     <div class="text-xs-center">
-                        <img src="http://www.narit.or.th/images/About/tno.jpg" width="500px">
+                        <img :src="require('@/assets/tno.jpg')" width="500px">
                     </div>
 
                     <p>
@@ -34,7 +33,7 @@
                     </p>
 
                     <div class="text-xs-center">
-                        <img src="http://www.narit.or.th/images/About/songkhla.png" width="500px">
+                        <img :src="require('@/assets/songkhla.png')" width="500px">
                     </div>
                     
                     <p>
@@ -53,7 +52,6 @@
                 </v-flex>
             </v-layout>
         </v-container>
-    </v-app>
 </template>
 
 
