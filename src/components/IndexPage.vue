@@ -30,12 +30,12 @@
             <v-container fluid grid-list-md>
             <v-layout row wrap justify-center>
                  <v-flex d-flex xs12 sm6 md4>
-                     <v-layout row wrap justify-center>
-                         <p class="font-weight-medium" style="font-size:30px; color: #FFFFFF">กิจกรรมที่ล่าสุด</p>
-                         <v-flex d-flex>
+                     <v-layout row wrap justify-center>                      
+                         <v-flex>
+                             <p class="font-weight-medium" style="font-size:30px; color: #FFFFFF">กิจกรรมที่ล่าสุด</p>
                               <v-card color="#3886BB" dark>
                                 <v-img
-                                :src="latestAct.img"
+                                :src="require('@/assets/'+latestAct.img)"
                                 aspect-ratio="1.7"
                                 ></v-img>
                                 <v-card-title primary-title>
@@ -72,7 +72,7 @@
                   <v-layout row>
                             <v-flex xs5 d-flex><br><br>
                                 <v-img
-                                :src="data.img"
+                                :src="require('@/assets/'+data.img)"
                                 aspect-ratio="1.7"
                                 ></v-img>
                             </v-flex>
@@ -98,8 +98,6 @@
         </v-container>
         <br><br><br><br><br><br><br><br>
         </template>
-           
-        
                     <v-layout row wrap>
                             <v-flex xs12 sm12 md12>   
                         <div class="footer">
