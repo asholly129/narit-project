@@ -157,6 +157,7 @@
 // import 'firebase/firestore'
 // import firebase from 'firebase'
 import { Carousel, Slide } from 'vue-carousel';
+import jsondata from '../data/narit-project-export.json'
 
 export default {
     name: 'IndexPage',
@@ -179,7 +180,30 @@ export default {
     created () {
     },
     mounted () {
-        // const moment = require('moment');
+        const moment = require('moment');
+    
+        let interestTemp = []
+        jsondata["activities"].forEach((e, index) => {
+            let actDate = e.date
+               let m = moment(actDate)
+                let temp = {
+                    title: e.title,
+                    content: e.content,
+                    date: actDate,
+                    isInterested: e.isInterested,
+                    month: m.format('MMM'),
+                    day: m.format('DD'),
+                    img: e.img,
+                    id: e.key
+                }
+                if (temp.isInterested) {
+                    interestTemp.push(temp)
+                }
+                this.activities.push(temp)
+        })
+        this.interestedAct = interestTemp.slice(Math.max(this.interestedAct.length - 3, 1))
+        this.latestAct = this.activities[this.activities.length - 1]
+        console.log(this.interestedAct)
         // const db = firebase.database().ref('/activities').once('value', (data) => {
         //     console.log(data)
         //     let interestTemp = []
