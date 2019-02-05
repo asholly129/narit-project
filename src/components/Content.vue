@@ -15,8 +15,8 @@
 
 
 <script>
-import 'firebase/firestore'
-import firebase from 'firebase'
+// import 'firebase/firestore'
+// import firebase from 'firebase'
 
 export default {
     data () {
@@ -32,10 +32,10 @@ export default {
     },
     mounted () {
 
-        const db = firebase.database().ref('/activities').child(this.$route.params.id).once('value', (data) => {
-            console.log(data.val())
-            this.data = data.val()
-        })
+        // const db = firebase.database().ref('/activities').child(this.$route.params.id).once('value', (data) => {
+        //     console.log(data.val())
+        //     this.data = data.val()
+        // })
     }
 }
 </script>
