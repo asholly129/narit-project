@@ -17,6 +17,7 @@
 <script>
 import 'firebase/firestore'
 import firebase from 'firebase'
+import jsondata from '../data/narit-project-export.json'
 
 export default {
     data () {
@@ -29,13 +30,15 @@ export default {
     },
     created () {
         console.log(this.$route.params.id)
+
     },
     mounted () {
-
-        const db = firebase.database().ref('/activities').child(this.$route.params.id).once('value', (data) => {
-            console.log(data.val())
-            this.data = data.val()
+        let temp = jsondata["activities"].filter((e,index) => {
+            return e.key === this.$route.params.id
         })
+        this.data = temp[0]
+        console.log(this.data)
+        
     }
 }
 </script>
